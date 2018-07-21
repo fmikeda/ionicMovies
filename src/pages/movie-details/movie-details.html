@@ -1,0 +1,79 @@
+<!--
+  Generated template for the MovieDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal" (click)="backToList()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Detalhes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="addComment()">
+        <ion-icon name="text"></ion-icon>
+      </button>
+      <button ion-button icon-only color="royal" (click)="addAvaliacao()">
+        <ion-icon name="star"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card class="movie-card">
+
+    <div class="img-container">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + this.movie.poster_path" />
+    </div>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{this.movie.title}}
+      </ion-card-title>
+      <p>
+        {{this.movie.overview}}
+      </p>
+    </ion-card-content>
+
+    <ion-row>
+
+      <ion-col *ngFor="let produtora of movie.production_companies">
+        <div *ngIf="produtora.logo_path">
+          <img [src]="'https://image.tmdb.org/t/p/w500' + produtora.logo_path" />
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="happy"></ion-icon>
+          <div>{{this.movie.popularity}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <div>
+      Comentários
+      <p *ngFor="let comment of getComments()">
+        {{comment.comment}}
+        <br> {{comment.date | date:'dd/MM/yyyy HH:mm'}}
+      </p>
+    </div>
+    <br>
+    <div>
+      Avaliações
+      <p *ngFor="let comment of getAvaliacoes()">
+        Nota: {{comment.nota}} - {{comment.date | date:'dd/MM/yyyy HH:mm'}}
+        <br> {{comment.comment}}
+        <br>
+      </p>
+    </div>
+  </ion-card>
+</ion-content>
