@@ -27,7 +27,7 @@
     <ion-item>
       <ion-label>Nota</ion-label>
       <ion-label>
-        <a *ngFor="let i of [1,2,3,4,5]" href="#" (click)="setNota(i)">
+        <a class="star" *ngFor="let i of [1,2,3,4,5]" href="#" (click)="setNota(i)">
           <ion-icon name="star-outline" *ngIf="nota < i"></ion-icon>
           <ion-icon name="star" *ngIf="nota >= i"></ion-icon>
         </a>
